@@ -21,48 +21,48 @@ export function Slider({ slides }: SliderProps) {
 
     return (
         <section
-            className="relative h-screen flex items-center overflow-hidden transition-colors duration-700"
+            className="relative min-h-screen flex items-center overflow-hidden transition-colors duration-700"
             style={{ backgroundColor: slides[currentSlide].backgroundColor }}
             aria-label="Apresentação principal"
         >
-            {/* Retângulo — anima a cada troca de slide */}
+            {/* Círculo decorativo — canto superior direito */}
             <motion.div
                 key={currentSlide}
-                className="absolute inset-y-0 right-0 w-3/10"
-                initial={{ opacity: 0, x: 200 }}
-                animate={{
-                    opacity: 1,
-                    x: 0,
-                    backgroundColor: slides[currentSlide].backgroundOtherColor || '#2B2B2B',
+                className="absolute rounded-full"
+                initial={{ opacity: 0, scale: 0.4, x: 100 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ duration: 1.0, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                    zIndex: 1,
+                    width: "min(140vw, 1400px)",
+                    height: "min(140vw, 1400px)",
+                    top: "calc(min(140vw, 1400px) / -2)",
+                    right: "calc(min(140vw, 1400px) / -2)",
+                    background: `radial-gradient(circle, ${slides[currentSlide].backgroundOtherColor || '#2B2B2B'} 0%, ${slides[currentSlide].backgroundColor} 100%)`,
                 }}
-                transition={{
-                    opacity: { duration: 0.6, delay: 0.15, ease: "easeOut" },
-                    x: { duration: 0.6, delay: 0.15, ease: "easeOut" },
-                    backgroundColor: { duration: 0, delay: 0 },
-                }}
-                style={{ zIndex: 2 }}
-            />
-
-            {/* Círculo decorativo — fora do stacking context do conteúdo */}
-            <motion.div
-                key={currentSlide}
-                className="absolute top-1/2 -translate-y-1/2 right-[15%] w-[30vw] h-[30vw] rounded-full bg-[#000000]/2"
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 1.2, ease: "easeOut" }}
-                style={{ zIndex: 1 }}
             />
 
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentSlide}
-                    className="relative w-full max-w-7xl mx-auto px-6 lg:px-8"
+                    className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:block items-center py-24 lg:py-0"
                     style={{ zIndex: 10 }}
                 >
+                    {/* Imagem — mobile: em cima, relativa; desktop: absoluta na direita */}
+                    <motion.img
+                        src={slides[currentSlide].imageUrl}
+                        alt={slides[currentSlide].title}
+                        className="relative lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 w-3/4 max-w-xs mb-10 lg:mb-0 lg:w-2/5 lg:max-w-2xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0, ease: "easeOut" }}
+                        style={{ zIndex: 3 }}
+                    />
+
                     {/* Conteúdo textual */}
-                    <div className="max-w-2xl">
+                    <div className="max-w-2xl text-center lg:text-left">
                         <motion.p
-                            className="text-xs font-semibold tracking-[0.25em] uppercase text-[#ba816d] mb-6"
+                            className="text-sm font-semibold tracking-[0.25em] uppercase text-[#ba816d] mb-6"
                             initial={{ opacity: 0, y: 24 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
@@ -71,7 +71,7 @@ export function Slider({ slides }: SliderProps) {
                         </motion.p>
 
                         <motion.h1
-                            className="font-sans text-5xl lg:text-7xl font-bold text-[#2B2B2B] leading-[1.05] tracking-tight mb-6"
+                            className="font-sans text-4xl lg:text-7xl font-bold text-[#2B2B2B] leading-[1.05] tracking-tight mb-6"
                             initial={{ opacity: 0, y: 24 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 1.35, ease: "easeOut" }}
@@ -80,6 +80,7 @@ export function Slider({ slides }: SliderProps) {
                         </motion.h1>
 
                         <motion.div
+                            className="flex justify-center lg:justify-start"
                             initial={{ opacity: 0, y: 24 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 1.5, ease: "easeOut" }}
@@ -95,30 +96,25 @@ export function Slider({ slides }: SliderProps) {
                             </Link>
                         </motion.div>
                     </div>
-
-
-                    {/* Imagem principal */}
-                    <motion.img
-                        src={slides[currentSlide].imageUrl}
-                        alt={slides[currentSlide].title}
-                        className="absolute top-1/2 -translate-y-1/2 right-0 w-2/5 max-w-2xl"
-                        initial={{ opacity: 0, x: 24 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 0, ease: "easeOut" }}
-                        style={{ zIndex: 3 }}
-                    />
                 </motion.div>
             </AnimatePresence>
 
             <button
                 onClick={handleNextSlide}
-                className="absolute bottom-0 left-8 hidden lg:flex items-center gap-4 cursor-pointer group bg-[#000000] text-[#ffffff] px-4 py-2 transition-colors duration-300"
+                className="absolute bottom-0 left-8 hidden lg:flex items-stretch cursor-pointer group bg-[#ffffff] text-[#000000] overflow-hidden transition-colors duration-300 h-20"
                 style={{ zIndex: 10 }}
             >
-                <div className="flex flex-col items-end gap-1">
-                    <span className="text-[10px] tracking-widest uppercase text-[#ffffff] group-hover:text-[#ffffff]/70 transition-colors duration-300">Próximo</span>
+                <div className="flex items-center px-4">
+                    <span className="text-[10px] tracking-widest uppercase text-[#000000] group-hover:text-[#000000]/70 transition-colors duration-300">Próximo</span>
                 </div>
-                <div className="w-16 h-20 overflow-hidden">
+                <div
+                    className="w-20 h-full shrink-0 p-2 transition-colors duration-300 flex items-center justify-center"
+                    style={{
+                        backgroundColor: slides[(currentSlide + 1) % slides.length].backgroundColor,
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = slides[(currentSlide + 1) % slides.length].backgroundOtherColor || '#2B2B2B')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = slides[(currentSlide + 1) % slides.length].backgroundColor)}
+                >
                     <img
                         src={slides[(currentSlide + 1) % slides.length].imageUrl}
                         alt={slides[(currentSlide + 1) % slides.length].title}
