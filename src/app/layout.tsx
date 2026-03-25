@@ -107,7 +107,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${inter.variable} ${playfair.variable} ${oliveCitrus.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-[#F7F5F2] text-[#2B2B2B]">
+      <body className="min-h-full flex flex-col bg-[#F7F5F2] text-[#2B2B2B]" suppressHydrationWarning>
         <JsonLd schema={organizationSchema()} />
         <JsonLd schema={websiteSchema()} />
 
