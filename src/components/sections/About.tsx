@@ -22,14 +22,14 @@ export function About() {
               </div>
               {/* Corner accent */}
               <div className="absolute top-6 right-6 w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center">
-                <span className="font-serif text-2xl font-bold text-[#ba816d]">B</span>
+                <span className="font-sans text-2xl font-bold text-[#ba816d]">B</span>
               </div>
             </div>
 
             {/* Floating badge */}
             <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-lg p-5">
               <p className="text-xs text-[#2B2B2B]/50 font-medium mb-1">Produtos únicos</p>
-              <p className="font-serif text-3xl font-bold text-[#2B2B2B]">100%</p>
+              <p className="font-sans text-3xl font-bold text-[#2B2B2B]">100%</p>
               <p className="text-xs text-[#ba816d] font-medium">Funcionais & bonitos</p>
             </div>
           </div>
@@ -41,7 +41,7 @@ export function About() {
             </p>
             <h2
               id="about-heading"
-              className="font-serif text-4xl lg:text-5xl font-bold text-[#2B2B2B] leading-tight mb-6"
+              className="font-sans text-4xl lg:text-5xl font-bold text-[#2B2B2B] leading-tight mb-6"
             >
               Criada para transformar espaços comuns em lugares especiais
             </h2>

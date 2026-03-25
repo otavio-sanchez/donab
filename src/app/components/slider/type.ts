@@ -6,6 +6,7 @@ export type Slide = {
   ctaText: string;
   ctaLink: string;
   backgroundColor: string;
+  backgroundOtherColor?: string;
 };
 
 export type SliderProps = {

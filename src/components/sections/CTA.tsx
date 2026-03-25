@@ -18,7 +18,7 @@ export function CTA() {
         </p>
         <h2
           id="cta-heading"
-          className="font-serif text-5xl lg:text-7xl font-bold text-[#F7F5F2] leading-tight mb-6"
+          className="font-sans text-5xl lg:text-7xl font-bold text-[#F7F5F2] leading-tight mb-6"
         >
           Seu espaço,{" "}
           <em className="not-italic text-[#ba816d]">do seu jeito</em>

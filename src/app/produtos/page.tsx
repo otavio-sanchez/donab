@@ -64,7 +64,7 @@ export default async function ProdutosPage({ searchParams }: Props) {
           <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#C8B6E2] mb-3">
             Coleção
           </p>
-          <h1 className="font-serif text-5xl lg:text-6xl font-bold text-[#2B2B2B]">
+          <h1 className="font-sans text-5xl lg:text-6xl font-bold text-[#2B2B2B]">
             {title}
           </h1>
           <p className="mt-4 text-[#2B2B2B]/60">
@@ -121,7 +121,7 @@ export default async function ProdutosPage({ searchParams }: Props) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
               </svg>
             </div>
-            <p className="font-serif text-xl text-[#2B2B2B]/50">
+            <p className="font-sans text-xl text-[#2B2B2B]/50">
               Nenhum produto encontrado.
             </p>
           </div>

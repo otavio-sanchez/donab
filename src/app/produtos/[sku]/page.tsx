@@ -131,7 +131,7 @@ export default async function ProductPage({ params }: Props) {
                 </p>
               )}
 
-              <h1 className="font-serif text-4xl lg:text-5xl font-bold text-[#2B2B2B] leading-tight mb-4">
+              <h1 className="font-sans text-4xl lg:text-5xl font-bold text-[#2B2B2B] leading-tight mb-4">
                 {product.name}
               </h1>
 

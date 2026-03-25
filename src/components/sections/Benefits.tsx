@@ -51,7 +51,7 @@ export function Benefits() {
           </p>
           <h2
             id="benefits-heading"
-            className="font-serif text-4xl lg:text-5xl font-bold text-[#2B2B2B]"
+            className="font-sans text-4xl lg:text-5xl font-bold text-[#2B2B2B]"
           >
             Mais do que objetos
           </h2>
@@ -63,7 +63,7 @@ export function Benefits() {
               <div className="w-14 h-14 bg-white flex items-center justify-center text-[#ba816d] mb-5 shadow-sm">
                 {benefit.icon}
               </div>
-              <h3 className="font-serif text-xl font-semibold text-[#2B2B2B] mb-2">
+              <h3 className="font-sans text-xl font-semibold text-[#2B2B2B] mb-2">
                 {benefit.title}
               </h3>
               <p className="text-sm text-[#2B2B2B]/65 leading-relaxed">

@@ -21,7 +21,7 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
             </p>
             <h2
               id="featured-heading"
-              className="font-serif text-4xl lg:text-5xl font-bold text-[#2B2B2B]"
+              className="font-sans text-4xl lg:text-5xl font-bold text-[#2B2B2B]"
             >
               Nossos favoritos
             </h2>
