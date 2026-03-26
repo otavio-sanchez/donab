@@ -9,6 +9,19 @@ import { SliderProps } from "./type"
 export function Slider({ slides }: SliderProps) {
 
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [windowSize, setWindowSize] = useState({ width: 1440, height: 900 });
+
+    useEffect(() => {
+        const update = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+        update();
+        window.addEventListener("resize", update);
+        return () => window.removeEventListener("resize", update);
+    }, []);
+
+    const isMobile = windowSize.width < 1024;
+    const circleDiameter = isMobile
+        ? Math.ceil(windowSize.width * 1.05)
+        : Math.ceil(Math.sqrt(windowSize.width ** 2 + windowSize.height ** 2) * 0.75);
 
     const handleNextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -34,10 +47,17 @@ export function Slider({ slides }: SliderProps) {
                 transition={{ duration: 1.0, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 style={{
                     zIndex: 1,
-                    width: "min(140vw, 1400px)",
-                    height: "min(140vw, 1400px)",
-                    top: "calc(min(140vw, 1400px) / -2)",
-                    right: "calc(min(140vw, 1400px) / -2)",
+                    width: circleDiameter,
+                    height: circleDiameter,
+                    ...(isMobile
+                        ? {
+                            top: -circleDiameter * 0.15,
+                            left: (windowSize.width - circleDiameter) / 2,
+                        }
+                        : {
+                            top: -circleDiameter / 2,
+                            right: -circleDiameter / 2,
+                        }),
                     background: `radial-gradient(circle, ${slides[currentSlide].backgroundOtherColor || '#2B2B2B'} 0%, ${slides[currentSlide].backgroundColor} 100%)`,
                 }}
             />
@@ -71,7 +91,7 @@ export function Slider({ slides }: SliderProps) {
                         </motion.p>
 
                         <motion.h1
-                            className="font-sans text-4xl lg:text-7xl font-bold text-[#2B2B2B] leading-[1.05] tracking-tight mb-6"
+                            className="font-sans text-3xl lg:text-6xl font-bold text-[#2B2B2B] leading-[1.05] tracking-tight mb-4"
                             initial={{ opacity: 0, y: 24 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 1.35, ease: "easeOut" }}
@@ -101,14 +121,14 @@ export function Slider({ slides }: SliderProps) {
 
             <button
                 onClick={handleNextSlide}
-                className="absolute bottom-0 left-8 hidden lg:flex items-stretch cursor-pointer group bg-[#ffffff] text-[#000000] overflow-hidden transition-colors duration-300 h-20"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-stretch cursor-pointer group bg-[#ffffff] text-[#000000] overflow-hidden transition-colors duration-300 h-12 lg:h-20"
                 style={{ zIndex: 10 }}
             >
-                <div className="flex items-center px-4">
-                    <span className="text-[10px] tracking-widest uppercase text-[#000000] group-hover:text-[#000000]/70 transition-colors duration-300">Próximo</span>
+                <div className="flex items-center px-3 lg:px-4">
+                    <span className="text-[9px] lg:text-[10px] tracking-widest uppercase text-[#000000] group-hover:text-[#000000]/70 transition-colors duration-300">Próximo</span>
                 </div>
                 <div
-                    className="w-20 h-full shrink-0 p-2 transition-colors duration-300 flex items-center justify-center"
+                    className="w-12 lg:w-20 h-full shrink-0 transition-colors duration-300 flex items-center justify-center"
                     style={{
                         backgroundColor: slides[(currentSlide + 1) % slides.length].backgroundColor,
                     }}

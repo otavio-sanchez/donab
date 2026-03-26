@@ -14,8 +14,8 @@ export function ProductCard({ product }: ProductCardProps) {
   const href = `/produtos/${product.sku}`;
 
   return (
-    <article className="group flex flex-col">
-      <Link href={href} className="block overflow-hidden bg-[#E8E2D9] aspect-square relative mb-4">
+    <article className="group">
+      <Link href={href} className="block overflow-hidden bg-[#E8E2D9] aspect-square relative">
         {photo ? (
           <Image
             src={photo}
@@ -30,45 +30,31 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
 
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-[#2B2B2B]/0 group-hover:bg-[#2B2B2B]/10 transition-colors duration-300" />
-      </Link>
-
-      <div className="flex flex-col flex-1">
-        <Link href={href} className="group/title">
-          <h3 className="font-sans text-lg font-semibold text-[#2B2B2B] leading-snug group-hover/title:text-[#ba816d] transition-colors">
+        {/* Gradiente + título sobre a imagem */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#2B2B2B]/70 via-[#2B2B2B]/10 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-4">
+          <h3 className="font-sans text-base font-bold text-white leading-snug">
             {product.name}
           </h3>
-        </Link>
-
-        {product.description && (
-          <p className="mt-1 text-sm text-[#2B2B2B]/60 leading-relaxed line-clamp-2">
-            {product.description}
-          </p>
-        )}
-
-        <div className="mt-3 flex items-center justify-between">
           {price !== null ? (
-            <span className="text-base font-semibold text-[#2B2B2B]">
-              {formatBRL(price)}
-            </span>
+            <p className="text-sm text-white/80 mt-0.5">{formatBRL(price)}</p>
           ) : (
-            <span className="text-sm text-[#2B2B2B]/40">Sob consulta</span>
-          )}
-
-          {externalUrl && (
-            <a
-              href={externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-medium text-[#ba816d] hover:text-[#2B2B2B] transition-colors border border-[#ba816d] hover:border-[#2B2B2B] px-3 py-1.5 rounded-full"
-              aria-label={`Comprar ${product.name}`}
-            >
-              Comprar
-            </a>
+            <p className="text-sm text-white/50 mt-0.5">Sob consulta</p>
           )}
         </div>
-      </div>
+      </Link>
+
+      {externalUrl && (
+        <a
+          href={externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-[#ba816d] hover:text-[#2B2B2B] transition-colors border border-[#ba816d] hover:border-[#2B2B2B] px-3 py-1.5 rounded-full"
+          aria-label={`Comprar ${product.name}`}
+        >
+          Comprar
+        </a>
+      )}
     </article>
   );
 }

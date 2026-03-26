@@ -19,6 +19,21 @@ export async function getFeaturedProducts(limit = 6): Promise<OctaverseProduct[]
   return all.slice(0, limit);
 }
 
+export async function getCategories(): Promise<{ slug: string; name: string; count: number }[]> {
+  const products = await getVisibleProducts();
+  const map = new Map<string, number>();
+  for (const p of products) {
+    if (p.category) map.set(p.category, (map.get(p.category) ?? 0) + 1);
+  }
+  return Array.from(map.entries())
+    .sort((a, b) => b[1] - a[1])
+    .map(([name, count]) => ({
+      slug: encodeURIComponent(name),
+      name,
+      count,
+    }));
+}
+
 export async function getProductBySku(sku: string): Promise<OctaverseProduct | null> {
   try {
     const product = await sdkGetProductBySku(sku);
