@@ -7,7 +7,7 @@ export async function AllProducts() {
   if (products.length === 0) return null;
 
   return (
-    <section className="py-16 bg-[red]" aria-labelledby="all-products-heading">
+    <section className="py-16 bg-[#F7F5F2]" aria-labelledby="all-products-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2
           id="all-products-heading"
