@@ -37,9 +37,9 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
           {price !== null ? (
-            <p className="text-sm text-white/80 mt-0.5">{formatBRL(price)}</p>
+            <p className="font-sans text-sm text-white/80 mt-0.5">{formatBRL(price)}</p>
           ) : (
-            <p className="text-sm text-white/50 mt-0.5">Sob consulta</p>
+            <p className="font-sans text-sm text-white/50 mt-0.5">Sob consulta</p>
           )}
         </div>
       </Link>
@@ -50,7 +50,7 @@ export function ProductCard({ product }: ProductCardProps) {
             href={platform.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#2B2B2B] hover:bg-[#ba816d] transition-colors px-4 py-2 rounded-full"
+            className="font-sans inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#2B2B2B] hover:bg-[#ba816d] transition-colors px-4 py-2"
             aria-label={`Comprar ${product.name} na ${platform.label}`}
           >
             Ver na {platform.label}
@@ -58,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-          <span className="text-[10px] text-[#2B2B2B]/40 shrink-0">Compra segura</span>
+          <span className="font-sans text-[10px] text-[#2B2B2B]/40 shrink-0">Compra segura</span>
         </div>
       )}
     </article>

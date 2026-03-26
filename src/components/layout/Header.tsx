@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/produtos", label: "Produtos" },
-  { href: "/produtos?categoria=Decoração", label: "Decoração" },
-  { href: "/produtos?categoria=Peça de Design", label: "Peças de Design" },
   { href: "/sobre", label: "Nossa história" },
 ];
 
@@ -28,29 +26,30 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-10 lg:px-16">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="font-olive-citrus text-3xl text-[#ba816d] tracking-wide hover:text-[#e0d8cb] transition-colors"
-            aria-label="Dona B - Início"
-          >
-            Dona B.
-          </Link>
+          {/* Logo + nav agrupados à esquerda */}
+          <div className="flex items-center gap-10">
+            <Link
+              href="/"
+              className="font-olive-citrus text-3xl text-[#ba816d] tracking-wide hover:text-[#e0d8cb] transition-colors"
+              aria-label="Dona B - Início"
+            >
+              Dona B.
+            </Link>
 
-          {/* Desktop nav */}
-          <nav aria-label="Navegação principal" className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="font-sans text-sm text-[#2B2B2B]/70 hover:text-[#2B2B2B] transition-colors tracking-wide"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+            <nav aria-label="Navegação principal" className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-sans text-sm text-[#2B2B2B]/70 hover:text-[#2B2B2B] transition-colors tracking-wide"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
           {/* Actions */}
           <div className="flex items-center gap-4">

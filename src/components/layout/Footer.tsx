@@ -1,12 +1,9 @@
 import Link from "next/link";
+import { getCategories } from "@/lib/products";
 
 const navLinks = [
   { label: "Produtos", href: "/produtos" },
-  { label: "Casa & Decor", href: "/produtos?categoria=Decoração" },
-  { label: "Peças de Design", href: "/produtos?categoria=Peça de Design" },
   { label: "Nossa história", href: "/sobre" },
-  { label: "Privacidade", href: "/privacidade" },
-  { label: "Termos de uso", href: "/termos" },
 ];
 
 const socialLinks = [
@@ -39,11 +36,12 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+export async function Footer() {
+  const categories = await getCategories();
   return (
     <footer className="bg-[#1E1E1E] text-[#F7F5F2]" aria-label="Rodapé">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
 
           {/* Col 1 — Brand */}
           <div>
@@ -67,7 +65,28 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Col 2 — Nav */}
+          {/* Col 2 — Categorias */}
+          {categories.length > 0 && (
+            <nav aria-label="Categorias">
+              <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#F7F5F2]/30 mb-5">
+                Categorias
+              </p>
+              <ul className="space-y-3">
+                {categories.map((cat) => (
+                  <li key={cat.name}>
+                    <Link
+                      href={`/produtos?categoria=${cat.slug}`}
+                      className="text-sm text-[#F7F5F2]/55 hover:text-[#F7F5F2] transition-colors"
+                    >
+                      {cat.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {/* Col 3 — Nav */}
           <nav aria-label="Links do site">
             <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#F7F5F2]/30 mb-5">
               Navegação
