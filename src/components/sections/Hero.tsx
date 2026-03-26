@@ -8,33 +8,33 @@ export function Hero() {
 slides={[
   {
     id: 1,
-    title: "Bem-vindo à Dona B",
-    description: "Decoração e Organização para sua Casa",
-    ctaText: "Explore nossa coleção",
+    title: "Casa & Decor",
+    description: "Objetos que transformam ambientes comuns em lugares especiais",
+    ctaText: "Ver produtos",
     ctaLink: "/produtos",
     backgroundColor: "#F7F5F2",
     imageUrl: "/slides/vaso_1.png",
-    backgroundOtherColor: "#E6DED4", // leve contraste quente
+    backgroundOtherColor: "#E6DED4",
   },
   {
     id: 2,
-    title: "Transforme seu Espaço",
-    description: "Vasos, itens de decoração e organização para cada ambiente",
-    ctaText: "Veja nossos produtos",
+    title: "Design com propósito",
+    description: "Cada peça pensada para ser bonita e funcional ao mesmo tempo",
+    ctaText: "Explorar coleção",
     ctaLink: "/produtos",
     backgroundColor: "#E4E8E1",
     imageUrl: "/slides/vaso_2.png",
-    backgroundOtherColor: "#D2D8CD", // verde levemente mais fechado
+    backgroundOtherColor: "#D2D8CD",
   },
   {
     id: 3,
-    title: "Design Minimalista e Funcional",
-    description: "Peças que unem beleza e praticidade para o dia a dia",
-    ctaText: "Conheça nossa marca",
+    title: "Minimal. Elegante. Seu.",
+    description: "Estética atemporal para quem valoriza os detalhes do dia a dia",
+    ctaText: "Conhecer a marca",
     ctaLink: "/sobre",
     backgroundColor: "#DCE6E8",
     imageUrl: "/slides/vaso_3.png",
-    backgroundOtherColor: "#C9D6DA", // azul suave mais escuro
+    backgroundOtherColor: "#C9D6DA",
   },
 ]}
     />

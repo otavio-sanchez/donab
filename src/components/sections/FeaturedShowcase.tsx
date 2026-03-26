@@ -15,12 +15,17 @@ export async function FeaturedShowcase() {
 
         {/* Header */}
         <div className="flex items-center justify-between mb-6 gap-4">
-          <h2
-            id="showcase-heading"
-            className="font-sans text-3xl lg:text-4xl font-bold text-[#2B2B2B] shrink-0"
-          >
-            Destaques
-          </h2>
+          <div>
+            <p className="text-xs font-semibold tracking-[0.25em] text-[#ba816d] mb-1">
+              Disponível nos nossos parceiros oficiais
+            </p>
+            <h2
+              id="showcase-heading"
+              className="font-sans text-3xl lg:text-4xl font-bold text-[#2B2B2B] shrink-0"
+            >
+              Peças em destaque
+            </h2>
+          </div>
 
           {categories.length > 0 && (
             <nav className="flex items-center gap-6 overflow-x-auto no-scrollbar">
@@ -109,7 +114,7 @@ function ShowcaseCard({
           <p className="text-sm text-white/80 mt-1">{formatBRL(price)}</p>
         )}
         <span className="inline-flex items-center gap-1.5 mt-3 text-xs font-medium text-white border border-white/40 rounded-full px-4 py-1.5 group-hover:bg-white group-hover:text-[#2B2B2B] transition-colors duration-300">
-          confira
+          Ver oferta
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/produtos", label: "Produtos" },
-  { href: "/produtos?niche=casa", label: "Casa & Decor" },
-  { href: "/produtos?niche=gamer", label: "Setup" },
+  { href: "/produtos?categoria=Decoração", label: "Decoração" },
+  { href: "/produtos?categoria=Peça de Design", label: "Peças de Design" },
+  { href: "/sobre", label: "Nossa história" },
 ];
 
 export function Header() {
@@ -44,7 +45,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-[#2B2B2B]/70 hover:text-[#2B2B2B] transition-colors tracking-wide"
+                className="font-sans text-sm text-[#2B2B2B]/70 hover:text-[#2B2B2B] transition-colors tracking-wide"
               >
                 {link.label}
               </Link>
@@ -55,7 +56,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <Link
               href="/produtos"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-[#2B2B2B] border border-[#2B2B2B]/20 px-4 py-2 rounded-full hover:bg-[#ba816d] hover:border-[#ba816d] hover:text-white transition-all duration-200"
+              className="font-sans hidden md:inline-flex items-center gap-2 text-sm font-medium text-[#2B2B2B] border border-[#2B2B2B]/20 px-4 py-2 rounded-full hover:bg-[#ba816d] hover:border-[#ba816d] hover:text-white transition-all duration-200"
             >
               Ver tudo
             </Link>
@@ -90,7 +91,7 @@ export function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block py-2 text-sm text-[#2B2B2B]/70 hover:text-[#2B2B2B] transition-colors"
+                    className="font-sans block py-2 text-sm text-[#2B2B2B]/70 hover:text-[#2B2B2B] transition-colors"
                   >
                     {link.label}
                   </Link>

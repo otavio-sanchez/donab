@@ -25,6 +25,22 @@ export function getPlatformUrl(product: OctaverseProduct): string | null {
   return null;
 }
 
+const PLATFORM_LABELS: Record<Platform, string> = {
+  shopee: "Shopee",
+  mercadolivre: "Mercado Livre",
+  amazon: "Amazon",
+  magalu: "Magazine Luiza",
+};
+
+export function getPlatformInfo(product: OctaverseProduct): { url: string; label: string } | null {
+  const priority: Platform[] = ["shopee", "mercadolivre", "amazon", "magalu"];
+  for (const platform of priority) {
+    const entry = product.platforms[platform];
+    if (entry?.active && entry.url) return { url: entry.url, label: PLATFORM_LABELS[platform] };
+  }
+  return null;
+}
+
 export function slugify(text: string): string {
   return text
     .toLowerCase()

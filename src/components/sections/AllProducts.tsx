@@ -1,8 +1,14 @@
 import { getVisibleProducts } from "@/lib/products";
 import { AllProductsGrid } from "@/components/ui/AllProductsGrid";
+import type { OctaverseProduct } from "@/types";
+
+function serialize(products: OctaverseProduct[]): OctaverseProduct[] {
+  return JSON.parse(JSON.stringify(products));
+}
 
 export async function AllProducts() {
-  const products = await getVisibleProducts();
+  const raw = await getVisibleProducts();
+  const products = serialize(raw);
 
   if (products.length === 0) return null;
 
@@ -13,7 +19,7 @@ export async function AllProducts() {
           id="all-products-heading"
           className="font-sans text-3xl lg:text-4xl font-bold text-[#2B2B2B] mb-8"
         >
-          Todos os produtos
+           Nossos produtos
         </h2>
 
         <AllProductsGrid products={products} pageSize={6} />

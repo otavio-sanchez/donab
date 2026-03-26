@@ -30,7 +30,6 @@ export async function Categories() {
           {/* Label + título */}
           <div className="shrink-0 w-40">
             <p className="flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.2em] text-[#ba816d] mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ba816d] inline-block" />
               Em destaque
             </p>
             <h2

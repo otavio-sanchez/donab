@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -7,15 +6,45 @@ import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/jsonld";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
+const mansfield = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Mansfield/Mansfield Thin.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Mansfield/Mansfield Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Mansfield/Mansfield.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Mansfield/Mansfield Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Mansfield/Mansfield Semi Bold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Mansfield/Mansfield Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Mansfield/Mansfield Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mansfield",
   display: "swap",
 });
 
@@ -105,7 +134,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${inter.variable} ${playfair.variable} ${oliveCitrus.variable} h-full`}
+      className={`${mansfield.variable} ${oliveCitrus.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-[#F7F5F2] text-[#2B2B2B]" suppressHydrationWarning>
         <JsonLd schema={organizationSchema()} />

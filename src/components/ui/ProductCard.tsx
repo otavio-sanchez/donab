@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { OctaverseProduct } from "@/types";
-import { formatBRL, getDisplayPrice, getPlatformUrl } from "@/lib/utils";
+import { formatBRL, getDisplayPrice, getPlatformInfo } from "@/lib/utils";
 
 interface ProductCardProps {
   product: OctaverseProduct;
@@ -9,7 +9,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const price = getDisplayPrice(product);
-  const externalUrl = getPlatformUrl(product);
+  const platform = getPlatformInfo(product);
   const photo = product.photos?.[0];
   const href = `/produtos/${product.sku}`;
 
@@ -44,16 +44,22 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
 
-      {externalUrl && (
-        <a
-          href={externalUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-[#ba816d] hover:text-[#2B2B2B] transition-colors border border-[#ba816d] hover:border-[#2B2B2B] px-3 py-1.5 rounded-full"
-          aria-label={`Comprar ${product.name}`}
-        >
-          Comprar
-        </a>
+      {platform && (
+        <div className="mt-3 flex items-center justify-between gap-3">
+          <a
+            href={platform.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#2B2B2B] hover:bg-[#ba816d] transition-colors px-4 py-2 rounded-full"
+            aria-label={`Comprar ${product.name} na ${platform.label}`}
+          >
+            Ver na {platform.label}
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <span className="text-[10px] text-[#2B2B2B]/40 shrink-0">Compra segura</span>
+        </div>
       )}
     </article>
   );
