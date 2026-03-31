@@ -1,4 +1,4 @@
-import "@/lib/sdk";
+import { sdkReady } from "@/lib/sdk";
 import {
   getVisibleProducts as sdkGetVisibleProducts,
   getProductBySku as sdkGetProductBySku,
@@ -8,6 +8,7 @@ import type { OctaverseProduct } from "@/types";
 
 export async function getVisibleProducts(): Promise<OctaverseProduct[]> {
   try {
+    await sdkReady;
     const products = await sdkGetVisibleProducts();
     return products as unknown as OctaverseProduct[];
   } catch {
@@ -37,13 +38,17 @@ export async function getCategories(): Promise<{ slug: string; name: string; cou
 
 export async function getProductBySku(sku: string): Promise<OctaverseProduct | null> {
   try {
-    const [product, sdkCategories] = await Promise.all([
+    await sdkReady;
+    const [productResult, categoriesResult] = await Promise.allSettled([
       sdkGetProductBySku(sku),
       sdkGetCategories(),
     ]);
-    if (!product) return null;
 
-    // category pode ser um ID — resolve para o nome se necessário
+    if (productResult.status === "rejected" || !productResult.value) return null;
+
+    const product = productResult.value;
+    const sdkCategories = categoriesResult.status === "fulfilled" ? categoriesResult.value : [];
+
     const categoryMatch = sdkCategories.find(
       (c) => c.id === product.category || c.name === product.category
     );

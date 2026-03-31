@@ -9,6 +9,9 @@ const nextConfig = {
         pathname: "/v0/b/**",
       },
     ],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 dias
+    formats: ["image/avif", "image/webp"],
+    quality: 80,
   },
 };
 

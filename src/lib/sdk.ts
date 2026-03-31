@@ -9,4 +9,5 @@ const config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
-initSDK(config);
+// Exporta a promise para que products.ts aguarde a auth antes de consultar
+export const sdkReady = initSDK(config);

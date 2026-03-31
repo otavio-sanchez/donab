@@ -3,8 +3,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { SliderProps } from "./type"
+
+const MotionImage = motion(Image);
 
 export function Slider({ slides }: SliderProps) {
 
@@ -69,14 +72,17 @@ export function Slider({ slides }: SliderProps) {
                     style={{ zIndex: 10 }}
                 >
                     {/* Imagem — mobile: em cima, relativa; desktop: absoluta na direita */}
-                    <motion.img
+                    <MotionImage
                         src={slides[currentSlide].imageUrl}
                         alt={slides[currentSlide].title}
-                        className="relative lg:absolute lg:top-1/2 lg:right-0 w-3/4 max-w-xs mb-10 lg:mb-0 lg:w-auto lg:max-w-[40%] lg:max-h-[85vh] lg:object-contain"
+                        width={600}
+                        height={800}
+                        className="relative lg:absolute lg:top-1/2 lg:right-0 w-3/4 max-w-xs mb-10 lg:mb-0 lg:w-auto lg:max-w-[40%] lg:max-h-[85vh] object-contain"
                         initial={{ opacity: 0, y: isMobile ? 20 : "-40%" }}
                         animate={{ opacity: 1, y: isMobile ? 0 : "-50%" }}
                         transition={{ duration: 0.6, delay: 0, ease: "easeOut" }}
                         style={{ zIndex: 3 }}
+                        priority
                     />
 
                     {/* Conteúdo textual */}
@@ -135,10 +141,13 @@ export function Slider({ slides }: SliderProps) {
                     onMouseEnter={e => (e.currentTarget.style.backgroundColor = slides[(currentSlide + 1) % slides.length].backgroundOtherColor || '#2B2B2B')}
                     onMouseLeave={e => (e.currentTarget.style.backgroundColor = slides[(currentSlide + 1) % slides.length].backgroundColor)}
                 >
-                    <img
+                    <Image
                         src={slides[(currentSlide + 1) % slides.length].imageUrl}
                         alt={slides[(currentSlide + 1) % slides.length].title}
+                        width={80}
+                        height={80}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                     />
                 </div>
             </button>

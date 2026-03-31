@@ -11,12 +11,7 @@ interface Props {
   params: Promise<{ sku: string }>;
 }
 
-export const revalidate = 3600;
-
-export async function generateStaticParams() {
-  const products = await getVisibleProducts();
-  return products.map((p) => ({ sku: p.sku }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { sku } = await params;
