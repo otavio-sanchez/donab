@@ -9,6 +9,9 @@ export async function POST(request: NextRequest) {
   const correctPassword = process.env.MAINTENANCE_PASSWORD
   const secret = process.env.MAINTENANCE_SECRET
 
+  console.log('[Manutenção] MAINTENANCE_PASSWORD:', correctPassword ? '✅ definida' : '❌ MISSING')
+  console.log('[Manutenção] MAINTENANCE_SECRET:', secret ? '✅ definida' : '❌ MISSING')
+
   if (!correctPassword || !secret) {
     return NextResponse.json({ error: 'Configuração inválida' }, { status: 500 })
   }
