@@ -72,9 +72,9 @@ export function Slider({ slides }: SliderProps) {
                     <motion.img
                         src={slides[currentSlide].imageUrl}
                         alt={slides[currentSlide].title}
-                        className="relative lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 w-3/4 max-w-xs mb-10 lg:mb-0 lg:w-2/5 lg:max-w-2xl"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        className="relative lg:absolute lg:top-1/2 lg:right-0 w-3/4 max-w-xs mb-10 lg:mb-0 lg:w-auto lg:max-w-[40%] lg:max-h-[85vh] lg:object-contain"
+                        initial={{ opacity: 0, y: isMobile ? 20 : "-40%" }}
+                        animate={{ opacity: 1, y: isMobile ? 0 : "-50%" }}
                         transition={{ duration: 0.6, delay: 0, ease: "easeOut" }}
                         style={{ zIndex: 3 }}
                     />

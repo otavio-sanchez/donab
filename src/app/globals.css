@@ -24,11 +24,6 @@
   --warm-dark: #8A6A5A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-mansfield);
-}
 
 html {
   scroll-behavior: smooth;
