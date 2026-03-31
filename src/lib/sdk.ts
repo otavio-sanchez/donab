@@ -9,13 +9,4 @@ const config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
-console.log("[SDK] Firebase config:", {
-  apiKey: config.apiKey ? `${config.apiKey.slice(0, 8)}...` : "❌ MISSING",
-  authDomain: config.authDomain || "❌ MISSING",
-  projectId: config.projectId || "❌ MISSING",
-  storageBucket: config.storageBucket || "❌ MISSING",
-  messagingSenderId: config.messagingSenderId || "❌ MISSING",
-  appId: config.appId ? `${config.appId.slice(0, 12)}...` : "❌ MISSING",
-});
-
 initSDK(config);
