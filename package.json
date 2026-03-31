@@ -2,7 +2,7 @@
   "name": "donab",
   "version": "0.1.0",
   "private": true,
-   "engines": {
+  "engines": {
     "node": "20"
   },
   "scripts": {
@@ -15,7 +15,7 @@
     "@octaverse-sdk/node": "^1.1.0",
     "firebase": "^12.11.0",
     "framer-motion": "^12.38.0",
-    "next": "^16.2.1",
+    "next": "14.2.35",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
@@ -24,8 +24,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^9",
-    "eslint-config-next": "^16.2.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
