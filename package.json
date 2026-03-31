@@ -6,6 +6,7 @@
     "node": "20"
   },
   "scripts": {
+    "postinstall": "node -e \"const fs=require('fs'),paths=['/workspace/node_modules/next','/node_modules/next'];paths.forEach(p=>{try{fs.statSync(p);console.log('[postinstall] FOUND:',p);}catch(e){console.log('[postinstall] MISSING:',p);}});try{const r=require.resolve('next/dist/server/config.js');console.log('[postinstall] resolve OK:',r);}catch(e){console.log('[postinstall] resolve FAIL:',e.code);}\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -15,7 +16,7 @@
     "@octaverse-sdk/node": "^1.1.0",
     "firebase": "^12.11.0",
     "framer-motion": "^12.38.0",
-    "next": "14.2.35",
+    "next": "16.2.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
@@ -24,8 +25,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.35",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
