@@ -3,8 +3,11 @@ import { generateMaintenanceToken } from '@/lib/maintenance-token'
 
 export const MAINTENANCE_COOKIE = 'donab_access'
 
+// 👇 Altere aqui para ativar ou desativar o modo de manutenção
+const MAINTENANCE_MODE = true
+
 export async function middleware(request: NextRequest) {
-  if (process.env.MAINTENANCE_MODE === 'true') {
+  if (!MAINTENANCE_MODE) {
     return NextResponse.next()
   }
 
