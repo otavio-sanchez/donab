@@ -4,7 +4,7 @@ import { generateMaintenanceToken } from '@/lib/maintenance-token'
 export const MAINTENANCE_COOKIE = 'donab_access'
 
 export async function middleware(request: NextRequest) {
-  if (process.env.MAINTENANCE_MODE !== 'true') {
+  if (process.env.MAINTENANCE_MODE === 'true') {
     return NextResponse.next()
   }
 
