@@ -8,9 +8,9 @@ export const revalidate = 3600;
 
 export default async function HomePage() {
 
-  console.log('[HomePage] RENDERING HOME PAGE', process.env.MAINTENANCE_MODE === 'true' ? '⚠️ MAINTENANCE MODE ACTIVE' : '✅ NORMAL MODE');
-
-  if (process.env.MAINTENANCE_MODE === 'true') {
+  const mainst = true
+  
+  if (mainst) {
     return (
       <div className="flex items-center justify-center h-screen">
         <h1 className="text-4xl font-bold">Estamos em manutenção. Voltamos em breve!</h1>
