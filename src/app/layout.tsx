@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/jsonld";
+import { MAINTENANCE_MODE } from "@/config";
 
 const mansfield = localFont({
   src: [
@@ -131,6 +132,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  if(MAINTENANCE_MODE)  {
+    return (
+      <html lang="pt-BR" className={`${mansfield.variable} ${oliveCitrus.variable} h-full`}>
+        <body className="min-h-full flex flex-col bg-[#F7F5F2] text-[#2B2B2B]">
+          <main id="main-content" className="flex-1 flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
+              <h1 className="text-2xl font-bold mb-4">Site em Manutenção</h1>
+              <p className="text-gray-700 mb-6">
+                Estamos realizando melhorias para oferecer uma experiência ainda melhor. Por favor, volte mais tarde!
+              </p>
+              <p className="text-sm text-gray-500">
+                Agradecemos pela compreensão.
+              </p>
+            </div>
+          </main>
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html
       lang="pt-BR"
