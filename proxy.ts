@@ -18,7 +18,7 @@ async function generateToken(secret: string): Promise<string> {
     .join('')
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Sempre libera assets e rotas internas
