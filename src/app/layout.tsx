@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { connection } from "next/server";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/jsonld";
-import { MAINTENANCE_MODE } from "@/config";
+import { getMaintenanceMode } from "@/lib/maintenance";
 
 const mansfield = localFont({
   src: [
@@ -127,13 +128,14 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
 
-  if(MAINTENANCE_MODE)  {
+  await connection();
+  if (await getMaintenanceMode()) {
     return (
       <html lang="pt-BR" className={`${mansfield.variable} ${oliveCitrus.variable} h-full`}>
         <body className="min-h-full flex flex-col bg-[#F7F5F2] text-[#2B2B2B]">
